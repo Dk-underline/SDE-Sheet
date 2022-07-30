@@ -1,0 +1,27 @@
+import java.util.* ;
+import java.io.*; 
+public class Solution 
+{
+    public static void sort012(int[] arr)
+    {
+        int n = arr.length;
+        int l = 0;
+        while(l<n && arr[l]==0) l++;
+        int h = n-1;
+        while( h>=0 && arr[h]==2) h--;
+        int mid = l;
+        while(mid<=h){
+            if( mid>=l && arr[mid]==0){
+                arr[mid] =arr[l];
+                arr[l]=0;
+                l++;
+            }
+            else if(arr[mid]==2){
+                arr[mid] = arr[h];
+                arr[h] = 2;
+                h--;
+            }
+            else mid++;
+        }
+    }
+}
