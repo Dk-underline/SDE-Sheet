@@ -1,0 +1,19 @@
+import java.util.* ;
+import java.io.*; 
+import java.util.ArrayList;
+
+public class Solution{
+    public static int maximumProfit(ArrayList<Integer> prices){
+       int n = prices.size();
+       int [] next = new int [n];
+        next[n-1] = prices.get(n-1);
+        for(int i=n-2;i>=0;i--){
+            next[i] = Math.max(prices.get(i),next[i+1]);
+        }
+        int profit=0;
+        for(int i=0;i<n;i++){
+            profit = Math.max(profit , next[i]-prices.get(i));
+        }
+        return profit;
+    }
+}
